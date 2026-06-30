@@ -4,8 +4,8 @@ export function renderHome() {
     <div class="page page--home">
       <header class="topbar">
         <a class="logo" href="/" aria-label="Quanta inicio">
-          <span class="logo__ring"></span>
-          <span class="logo__text">Quanta</span>
+          <span class="logo__icon"><span class="logo__gn"></span><span class="logo__core"></span></span>
+          <span class="logo__text">Quanta Chat</span>
         </a>
       </header>
       <main class="hero">
@@ -16,7 +16,7 @@ export function renderHome() {
       <nav class="navbar">
         <a href="/">Inicio</a>
         <a href="/chat">Chat</a>
-        <a href="/about">Acerca de</a>
+        <a href="/about">About</a>
       </nav>
     </div>
   `;

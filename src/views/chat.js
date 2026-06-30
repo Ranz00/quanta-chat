@@ -9,7 +9,10 @@ export function renderChat() {
   document.querySelector('#app').innerHTML = `
     <div class="chatApp">
       <header class="chatHeader">
-        <a class="logo logo--sm" href="/">Quanta</a>
+        <a class="logo logo--sm" href="/">
+          <span class="logo__icon"><span class="logo__gn"></span><span class="logo__core"></span></span>
+          <span class="logo__text">Quanta Chat</span>
+        </a>
         <h1 class="chatTitle">Chat</h1>
       </header>
       <main class="chatMessages" id="chatMessages" aria-label="Mensajes"></main>
@@ -20,7 +23,7 @@ export function renderChat() {
       <nav class="navbar">
         <a href="/">Inicio</a>
         <a href="/chat">Chat</a>
-        <a href="/about">Acerca de</a>
+        <a href="/about">About</a>
       </nav>
     </div>
   `;
