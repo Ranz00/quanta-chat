@@ -23,11 +23,8 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: "Message is required" });
     }
 
-    // Init model with system prompt
-    const model = genAI.getGenerativeModel({
-      model: "gemini-2.5-flash",
-      systemInstruction: SYSTEM_PROMPT,
-    });
+    // Init model
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
     // Map frontend history to Gemini format: { role, content } → { role, parts }
     const geminiHistory = history.map((m) => ({
@@ -35,8 +32,11 @@ export default async function handler(req, res) {
       parts: [{ text: m.content }],
     }));
 
-    // Send message with conversation history
-    const chat = model.startChat({ history: geminiHistory });
+    // Send message with conversation history + system prompt
+    const chat = model.startChat({
+      history: geminiHistory,
+      systemInstruction: SYSTEM_PROMPT,
+    });
     const result = await chat.sendMessage(message);
     const reply = result.response.text();
 
