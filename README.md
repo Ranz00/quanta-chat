@@ -1,6 +1,6 @@
 # Quanta Chat
 
-SPA vanilla JavaScript para chatear con Quanta, una IA con mentalidad científica inspirada en Gundam 00.
+SPA vanilla JavaScript para chatear con Quanta, una IA con mentalidad científica.
 
 ## Demo
 
