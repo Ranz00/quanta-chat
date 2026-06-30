@@ -8,7 +8,7 @@ const messages = [
 export function renderChat() {
   document.querySelector('#app').innerHTML = `
     <div class="chatApp">
-      <header class="chatHeader">
+      <header class="topbar">
         <a class="logo logo--sm" href="/">
           <span class="logo__icon">
             <span class="logo__fin logo__fin--l"></span>
@@ -17,18 +17,17 @@ export function renderChat() {
           </span>
           <span class="logo__text">Quanta Chat</span>
         </a>
-        <h1 class="chatTitle">Chat</h1>
+        <nav class="topbar__nav">
+          <a href="/">Inicio</a>
+          <a href="/chat">Chat</a>
+          <a href="/about">About</a>
+        </nav>
       </header>
       <main class="chatMessages" id="chatMessages" aria-label="Mensajes"></main>
       <form class="chatComposer" id="chatComposer">
         <input class="chatInput" id="chatInput" type="text" placeholder="Escribí tu mensaje…" aria-label="Escribí tu mensaje" />
         <button class="chatSend" type="submit">Enviar</button>
       </form>
-      <nav class="navbar">
-        <a href="/">Inicio</a>
-        <a href="/chat">Chat</a>
-        <a href="/about">About</a>
-      </nav>
     </div>
   `;
   renderMessages();

@@ -2,7 +2,7 @@
 export function renderAbout() {
   document.querySelector('#app').innerHTML = `
     <div class="page page--about">
-      <header class="chatHeader">
+      <header class="topbar">
         <a class="logo logo--sm" href="/">
           <span class="logo__icon">
             <span class="logo__fin logo__fin--l"></span>
@@ -11,7 +11,11 @@ export function renderAbout() {
           </span>
           <span class="logo__text">Quanta Chat</span>
         </a>
-        <h1 class="chatTitle">About</h1>
+        <nav class="topbar__nav">
+          <a href="/">Inicio</a>
+          <a href="/chat">Chat</a>
+          <a href="/about">About</a>
+        </nav>
       </header>
       <main class="aboutContent">
         <section>
@@ -25,11 +29,6 @@ export function renderAbout() {
           <p>Quanta es una IA con mentalidad científica: precisa, concisa, directa.</p>
         </section>
       </main>
-      <nav class="navbar">
-        <a href="/">Inicio</a>
-        <a href="/chat">Chat</a>
-        <a href="/about">About</a>
-      </nav>
     </div>
   `;
 }
