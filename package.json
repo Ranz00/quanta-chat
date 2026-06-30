@@ -4,10 +4,13 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vercel dev",
-    "test": "node --test"
+    "test": "vitest run"
   },
   "devDependencies": {
-    "vercel": "^54.17.3"
+    "vercel": "^50.41.0",
+    "vitest": "^4.1.9"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1"
   }
 }
