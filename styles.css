@@ -81,7 +81,7 @@ body {
 /* ========== HOME ========== */
 .page--home {
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto auto 1fr;
   min-height: 100vh;
   min-height: 100dvh;
 }
@@ -247,12 +247,24 @@ body {
   background: rgba(10, 22, 40, 0.6);
 }
 
+.navbar--top {
+  justify-content: flex-start;
+  padding: 1rem 1.5rem;
+  border-top: none;
+  border-bottom: 1px solid var(--border);
+}
+
 .navbar a {
   color: var(--text-muted);
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 500;
   transition: color 0.2s;
+}
+
+.navbar--top a {
+  font-size: 1.05rem;
+  font-weight: 600;
 }
 
 .navbar a:hover { color: var(--gn-glow); }
