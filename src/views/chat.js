@@ -1,14 +1,9 @@
-const MAX_HISTORY_TURNS = 10;
+import { appendUserMessage, appendAssistantMessage, getTrimmedHistory } from '../utils.js';
 
+// Messages array for DOM rendering (separate from API history)
 const messages = [
   { role: 'character', text: '¡Hola! Soy Quanta. ¿Sobre qué querés hablar hoy?' },
 ];
-
-function getHistory() {
-  const valid = messages.filter((m) => !m.thinking);
-  const start = Math.max(0, valid.length - MAX_HISTORY_TURNS * 2);
-  return valid.slice(start);
-}
 
 export function renderChat() {
   document.querySelector('#app').innerHTML = `
@@ -33,24 +28,29 @@ export function renderChat() {
   setupChatHandlers();
 }
 
+// Render messages to DOM
 function renderMessages() {
   const c = document.querySelector('#chatMessages');
   c.innerHTML = messages.map(m => `<div class="message message--${m.role}">${m.text}</div>`).join('');
   c.scrollTop = c.scrollHeight;
 }
 
-// Cambiado: placeholder → fetch real a /api/chat, loading "pensando…", error visible en chat
+// Fetch real a /api/chat, loading "pensando…", error visible en chat
 function setupChatHandlers() {
   const form = document.querySelector('#chatComposer');
   const input = document.querySelector('#chatInput');
+  let history = [];
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const text = input.value.trim();
     if (!text) return;
+    // Add user message to display and history
     messages.push({ role: 'user', text });
+    history = appendUserMessage(history, text);
     input.value = '';
     renderMessages();
 
+    // Show thinking indicator
     messages.push({ role: 'character', text: 'Quanta está pensando…', thinking: true });
     renderMessages();
 
@@ -58,17 +58,20 @@ function setupChatHandlers() {
       const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: text, history: getHistory() }),
+        body: JSON.stringify({ message: text, history: getTrimmedHistory(history) }),
       });
 
+      // Remove thinking indicator before adding response
       const thinkingIdx = messages.findIndex((m) => m.thinking);
       if (thinkingIdx !== -1) messages.splice(thinkingIdx, 1);
 
+      // Add error or success message
       if (!res.ok) {
         messages.push({ role: 'character', text: 'Error: no se pudo obtener respuesta del servidor.' });
       } else {
         const data = await res.json();
         messages.push({ role: 'character', text: data.reply });
+        history = appendAssistantMessage(history, data.reply);
       }
     } catch {
       const thinkingIdx = messages.findIndex((m) => m.thinking);
