@@ -21,6 +21,7 @@ body {
   background-attachment: fixed;
   color: var(--text);
   min-height: 100vh;
+  min-height: 100dvh;
 }
 
 /* ========== LOGO ========== */
@@ -169,6 +170,11 @@ body {
   box-shadow: 0 0 30px rgba(0, 180, 216, 0.5);
 }
 
+.cta:focus-visible {
+  outline: 2px solid var(--gn-glow);
+  outline-offset: 3px;
+}
+
 /* ========== CHAT ========== */
 .chatApp {
   display: flex;
@@ -255,6 +261,11 @@ body {
   box-shadow: 0 0 12px rgba(255, 214, 10, 0.4);
 }
 
+.chatSend:focus-visible {
+  outline: 2px solid var(--trans-gold);
+  outline-offset: 2px;
+}
+
 /* ========== NAVBAR ========== */
 .navbar {
   display: flex;
@@ -323,11 +334,44 @@ body {
 }
 
 /* ========== RESPONSIVE ========== */
+
+/* Tablet (768px+) */
 @media (min-width: 768px) {
+  .topbar { padding: 1rem 2rem; }
+  .topbar__nav { gap: 2rem; }
+  .topbar__nav a { font-size: 1.1rem; }
+
+  .hero { gap: 2rem; padding: 3rem; }
   .hero__title { font-size: 4rem; }
-  .hero__tagline { font-size: 1.2rem; }
+  .hero__tagline { font-size: 1.25rem; max-width: 32rem; }
+  .cta { font-size: 1.1rem; padding: 1rem 2.5rem; }
+
+  .chatMessages { padding: 1.5rem; gap: 1rem; }
+  .message { max-width: 70%; font-size: 1rem; padding: 0.85rem 1.1rem; }
+  .chatComposer { padding: 1rem 1.5rem; }
+  .chatInput { font-size: 1rem; padding: 0.85rem 1.1rem; }
+  .chatSend { font-size: 1rem; padding: 0.85rem 1.5rem; }
+
+  .aboutContent { padding: 2rem; }
+  .aboutContent h2 { font-size: 1.3rem; }
 }
 
+/* Desktop (1024px+) */
 @media (min-width: 1024px) {
+  .topbar { padding: 1.25rem 3rem; }
+  .topbar__nav { gap: 2.5rem; }
+  .topbar__nav a { font-size: 1.15rem; }
+
+  .page--home { max-width: 80rem; margin: 0 auto; }
+  .hero { padding: 4rem; }
+  .hero__title { font-size: 5rem; }
+  .hero__tagline { font-size: 1.35rem; max-width: 36rem; }
+
   .chatApp, .page--about { max-width: 64rem; margin: 0 auto; }
+  .chatMessages { padding: 2rem; }
+  .message { max-width: 55%; font-size: 1.05rem; }
+  .chatComposer { padding: 1rem 2rem; }
+
+  .aboutContent { padding: 2.5rem 3rem; }
+  .aboutContent h2 { font-size: 1.4rem; }
 }
