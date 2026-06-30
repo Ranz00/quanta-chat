@@ -4,7 +4,11 @@ export function renderAbout() {
     <div class="page page--about">
       <header class="chatHeader">
         <a class="logo logo--sm" href="/">
-          <span class="logo__icon"><span class="logo__gn"></span><span class="logo__core"></span></span>
+          <span class="logo__icon">
+            <span class="logo__fin logo__fin--l"></span>
+            <span class="logo__fin logo__fin--r"></span>
+            <span class="logo__orb"></span>
+          </span>
           <span class="logo__text">Quanta Chat</span>
         </a>
         <h1 class="chatTitle">About</h1>

@@ -2,16 +2,20 @@
 export function renderHome() {
   document.querySelector('#app').innerHTML = `
     <div class="page page--home">
-      <nav class="navbar navbar--top">
-        <a href="/">Inicio</a>
-        <a href="/chat">Chat</a>
-        <a href="/about">About</a>
-      </nav>
       <header class="topbar">
         <a class="logo" href="/" aria-label="Quanta inicio">
-          <span class="logo__icon"><span class="logo__gn"></span><span class="logo__core"></span></span>
+          <span class="logo__icon">
+            <span class="logo__fin logo__fin--l"></span>
+            <span class="logo__fin logo__fin--r"></span>
+            <span class="logo__orb"></span>
+          </span>
           <span class="logo__text">Quanta Chat</span>
         </a>
+        <nav class="topbar__nav">
+          <a href="/">Inicio</a>
+          <a href="/chat">Chat</a>
+          <a href="/about">About</a>
+        </nav>
       </header>
       <main class="hero">
         <h1 class="hero__title">Quanta</h1>
