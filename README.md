@@ -42,7 +42,8 @@ quanta-chat/
 │       ├── about.js         # Project info
 │       └── notFound.js      # 404
 ├── tests/
-│   └── utils.test.js        # Unit tests (Vitest)
+│   ├── utils.test.js        # Unit tests — history functions (Vitest)
+│   └── chat.test.js         # Unit tests — fetch mock (Vitest)
 ├── index.html
 ├── styles.css               # Quanta theme
 └── vercel.json              # SPA rewrite rules
