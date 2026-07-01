@@ -1,9 +1,10 @@
 import { appendUserMessage, appendAssistantMessage, getTrimmedHistory } from '../utils.js';
 
-// Messages array for DOM rendering (separate from API history)
+// Messages and history persist across navigations (module scope)
 const messages = [
   { role: 'character', text: '¡Hola! Soy Quanta. ¿Sobre qué querés hablar hoy?' },
 ];
+let history = [];
 
 export function renderChat() {
   document.querySelector('#app').innerHTML = `
@@ -41,11 +42,11 @@ function renderMessages() {
   c.scrollTop = c.scrollHeight;
 }
 
-// Fetch real a /api/chat, loading "pensando…", error visible en chat
+// Fetch from /api/chat, loading "pensando…", error visible en chat
 function setupChatHandlers() {
   const form = document.querySelector('#chatComposer');
   const input = document.querySelector('#chatInput');
-  let history = [];
+  const btn = form.querySelector('.chatSend');
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const text = input.value.trim();
@@ -55,6 +56,10 @@ function setupChatHandlers() {
     history = appendUserMessage(history, text);
     input.value = '';
     renderMessages();
+
+    // Disable inputs during fetch
+    btn.disabled = true;
+    input.disabled = true;
 
     // Show thinking indicator
     messages.push({ role: 'character', text: 'Quanta está pensando…', thinking: true });
@@ -83,8 +88,12 @@ function setupChatHandlers() {
       const thinkingIdx = messages.findIndex((m) => m.thinking);
       if (thinkingIdx !== -1) messages.splice(thinkingIdx, 1);
       messages.push({ role: 'character', text: 'Error de conexión. Verificá tu red.' });
+    } finally {
+      // Re-enable inputs and re-render
+      btn.disabled = false;
+      input.disabled = false;
+      input.focus();
+      renderMessages();
     }
-
-    renderMessages();
   });
 }
