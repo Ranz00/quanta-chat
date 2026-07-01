@@ -19,7 +19,7 @@ export function renderHome() {
       </header>
       <main class="hero">
         <h1 class="hero__title">Quanta</h1>
-        <p class="hero__tagline">Tu compañera de conversación con curiosidad cuántica.</p>
+        <p class="hero__tagline">Preguntale lo que quieras.</p>
         <a class="cta" href="/chat">Empezar a chatear</a>
       </main>
     </div>
