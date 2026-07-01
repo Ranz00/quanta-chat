@@ -1,4 +1,4 @@
-/* Gundam 00 Quanta inspired palette */
+/* Quanta inspired palette */
 :root {
   --bg-deep: #0a1628;
   --bg-mid: #0d1b2a;
@@ -45,7 +45,7 @@ body {
   justify-content: center;
 }
 
-/* Gundam V-fin icon */
+/* V-fin icon */
 .logo__fin {
   position: absolute;
   width: 0.3rem;

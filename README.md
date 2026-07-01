@@ -44,7 +44,7 @@ quanta-chat/
 ├── tests/
 │   └── utils.test.js        # Unit tests (Vitest)
 ├── index.html
-├── styles.css               # Gundam 00 Quanta theme
+├── styles.css               # Quanta theme
 └── vercel.json              # SPA rewrite rules
 ```
 
